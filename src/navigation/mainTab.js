@@ -12,9 +12,9 @@ const mainTab = () => {
     return (
         <Tab.Navigator>
             <Tab.Screen name="Home" component={Home} />
-            <Tab.Screen name="Cart" component={Cart} />
+            {/* <Tab.Screen name="Cart" component={Cart} />
             <Tab.Screen name="Profile" component={Profile} />
-            <Tab.Screen name="Favorites" component={Favorites} />
+            <Tab.Screen name="Favorites" component={Favorites} /> */}
         </Tab.Navigator>
     )
 }
