@@ -7,7 +7,7 @@ const Container = ({ children, statusBar, ...props }) => {
     return (
         <ContainerHolder {...props}>
             {children}
-            <StatusBar style={statusBar ? statusBar : "light"} />
+            <StatusBar style={statusBar ? statusBar : "dark"} />
         </ContainerHolder>
     )
 }

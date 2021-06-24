@@ -8,7 +8,7 @@ import Favorites from '../screens/Favorites'
 
 const Tab = createBottomTabNavigator()
 
-const mainTab = () => {
+const MainTab = () => {
     return (
         <Tab.Navigator>
             <Tab.Screen name="Home" component={Home} />
@@ -19,4 +19,4 @@ const mainTab = () => {
     )
 }
 
-export default mainTab
+export default MainTab

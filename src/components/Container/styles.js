@@ -18,7 +18,7 @@ const getCenter = (props) => {
 
 export const ContainerHolder = styled(SafeAreaView)`
     flex:1;
-    padding: ${({ padding }) => padding ? padding : "0px"};
+    padding: ${({ padding }) => padding ? `${padding}px` : "0px"};
     background: ${({ background }) => background ? background : "#fff"};
     ${getCenter}
 `
