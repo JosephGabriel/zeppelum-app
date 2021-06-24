@@ -1,53 +1,96 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 import { TouchableOpacity, ScrollView } from 'react-native'
 import { TextInput } from 'react-native-paper'
 
+import { registerUserStart } from '../../redux/user/userActions'
 import Container from '../../components/Container'
-import { default as Input } from '../../components/TextInput'
 
-import { TextContainer, InputContainer, LoginButton, RegisterTextAccent, RegisterText, ImageContainer, Logo } from './styles'
+import { TextContainer, InputContainer, Input, RegisterButton, RegisterTextAccent, RegisterText, ImageContainer, Logo } from './styles'
 
-const Login = () => {
+const Register = () => {
+
+    const dispatch = useDispatch()
+    const loading = useSelector((state) => state.user.loading)
+
+    const [name, setName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
+
+    const [hidden, setHidden] = useState(true)
+    const [hiddenConfirm, setHiddenConfirm] = useState(true)
 
     const navigation = useNavigation()
 
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             <Container center>
+
                 <ImageContainer>
                     <Logo resizeMode="contain" source={require('../../../assets/logo.jpg')} />
                 </ImageContainer>
+
                 <InputContainer>
+
                     <Input
                         mode="outlined"
                         label="Nome"
+                        value={name}
+                        onChangeText={(name) => setName(name)}
                         left={<TextInput.Icon name="account" color="gray" />}
                     />
+
                     <Input
                         mode="outlined"
                         label="Sobrenome"
-                        left={<TextInput.Icon name="account" color="gray" />}
+                        value={lastName}
+                        onChangeText={(lastName) => setLastName(lastName)}
+                        left={<TextInput.Icon name="account-multiple" color="gray" />}
                     />
+
                     <Input
                         mode="outlined"
                         label="Email"
+                        value={email}
+                        keyboardType="email-address"
+                        onChangeText={(email) => setEmail(email)}
                         left={<TextInput.Icon name="email" color="gray" />}
                     />
+
                     <Input
                         mode="outlined"
                         label="Senha"
-                        secureTextEntry={true}
+                        value={password}
+                        secureTextEntry={hidden}
+                        onChangeText={(password) => setPassword(password)}
                         left={<TextInput.Icon name="lock" color="gray" />}
+                        right={
+                            password ?
+                                <TextInput.Icon onPress={() => setHidden(!hidden)} name={hidden ? "eye" : "eye-off"} color="gray" />
+                                : null
+                        }
                     />
+
                     <Input
                         mode="outlined"
                         label="Confirmar senha"
-                        secureTextEntry={true}
+                        value={confirmPassword}
+                        autoCapitalize={false}
+                        secureTextEntry={hiddenConfirm}
+                        onChangeText={(confirmPassword) => setConfirmPassword(confirmPassword)}
                         left={<TextInput.Icon name="lock" color="gray" />}
+                        right={
+                            confirmPassword ?
+                                <TextInput.Icon onPress={() => setHiddenConfirm(!hiddenConfirm)} name={hiddenConfirm ? "eye" : "eye-off"} color="gray" />
+                                : null
+                        }
                     />
 
-                    <LoginButton mode="contained">Registrar</LoginButton>
+                    <RegisterButton mode="contained" loading={loading}
+                        onPress={() => dispatch(registerUserStart({ user: { name, lastName, email, password, createdAt: new Date() } }))}>Registrar</RegisterButton>
 
                     <TextContainer>
                         <RegisterText>Já tem uma conta? </RegisterText>
@@ -62,4 +105,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Register

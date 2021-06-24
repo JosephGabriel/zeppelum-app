@@ -13,6 +13,7 @@ const Login = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector((state) => state.user.loading)
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [hidden, setHidden] = useState(true)
@@ -28,12 +29,17 @@ const Login = () => {
                 <Input
                     mode="outlined"
                     label="Email"
+                    value={email}
+                    autoCapitalize={false}
+                    keyboardType="email-address"
                     onChangeText={(email) => setEmail(email)}
                     left={<TextInput.Icon name="email" color="gray" />}
                 />
                 <Input
                     mode="outlined"
                     label="Senha"
+                    value={password}
+                    autoCapitalize={false}
                     secureTextEntry={hidden}
                     onChangeText={(password) => setPassword(password)}
                     left={<TextInput.Icon name="lock" color="gray" />}

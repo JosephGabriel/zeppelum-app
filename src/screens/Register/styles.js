@@ -16,7 +16,7 @@ export const Input = styled(TextInput)`
     margin-bottom: 16px;
 `
 
-export const LoginButton = styled(Button)`
+export const RegisterButton = styled(Button)`
     padding: 8px 16px;
     margin-bottom: 24px;
 `
