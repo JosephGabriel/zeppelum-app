@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { TouchableOpacity } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
 import { TextInput } from 'react-native-paper'
 
 import Container from '../../components/Container'
+import { loginUserStart } from '../../redux/user/userActions'
 
 import { TextContainer, InputContainer, Input, LoginButton, RegisterTextAccent, RegisterText, ImageContainer, Logo } from './styles'
 
 const Login = () => {
+
+    const dispatch = useDispatch()
+    const loading = useSelector((state) => state.user.loading)
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [hidden, setHidden] = useState(true)
 
     const navigation = useNavigation()
 
@@ -20,16 +28,23 @@ const Login = () => {
                 <Input
                     mode="outlined"
                     label="Email"
+                    onChangeText={(email) => setEmail(email)}
                     left={<TextInput.Icon name="email" color="gray" />}
                 />
                 <Input
                     mode="outlined"
                     label="Senha"
-                    secureTextEntry={true}
+                    secureTextEntry={hidden}
+                    onChangeText={(password) => setPassword(password)}
                     left={<TextInput.Icon name="lock" color="gray" />}
+                    right={
+                        password ?
+                            <TextInput.Icon onPress={() => setHidden(!hidden)} name={hidden ? "eye" : "eye-off"} color="gray" />
+                            : null
+                    }
                 />
 
-                <LoginButton mode="contained">Fazer Login</LoginButton>
+                <LoginButton mode="contained" loading={loading} onPress={() => dispatch(loginUserStart({ email, password }))}>Fazer Login</LoginButton>
 
                 <TextContainer>
                     <RegisterText>Ainda não tem uma conta? </RegisterText>

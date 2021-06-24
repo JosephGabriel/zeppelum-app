@@ -4,8 +4,9 @@ import { TouchableOpacity, ScrollView } from 'react-native'
 import { TextInput } from 'react-native-paper'
 
 import Container from '../../components/Container'
+import { default as Input } from '../../components/TextInput'
 
-import { TextContainer, InputContainer, Input, LoginButton, RegisterTextAccent, RegisterText, ImageContainer, Logo } from './styles'
+import { TextContainer, InputContainer, LoginButton, RegisterTextAccent, RegisterText, ImageContainer, Logo } from './styles'
 
 const Login = () => {
 
