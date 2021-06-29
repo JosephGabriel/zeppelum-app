@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity, ScrollView } from "react-native";
@@ -21,6 +21,7 @@ import {
 const Register = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.user.loadingRegister);
+  const user = useSelector((state) => state.user.currentUser);
 
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -32,6 +33,16 @@ const Register = () => {
   const [hiddenConfirm, setHiddenConfirm] = useState(true);
 
   const navigation = useNavigation();
+
+  useEffect(() => {
+    setTimeout(() => {
+      user
+        ? navigation.reset({
+            routes: [{ name: "MainTab" }],
+          })
+        : null;
+    });
+  }, [user]);
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>

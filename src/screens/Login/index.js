@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,12 +21,23 @@ import {
 const Login = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.user.loading);
+  const user = useSelector((state) => state.user.currentUser);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [hidden, setHidden] = useState(true);
 
   const navigation = useNavigation();
+
+  useEffect(() => {
+    setTimeout(() => {
+      user
+        ? navigation.reset({
+            routes: [{ name: "MainTab" }],
+          })
+        : null;
+    });
+  }, [user]);
 
   return (
     <Container center>

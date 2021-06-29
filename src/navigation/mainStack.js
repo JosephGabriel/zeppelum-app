@@ -1,27 +1,29 @@
-import React from 'react'
-import { createStackNavigator } from '@react-navigation/stack'
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import Login from '../screens/Login'
-import Preload from '../screens/Preload'
-import Register from '../screens/Register'
+import Login from "../screens/Login";
+import Preload from "../screens/Preload";
+import Register from "../screens/Register";
 
+import MainTab from "./mainTab";
 
-const Stack = createStackNavigator()
+const Stack = createStackNavigator();
 
 const screenOptions = {
-    headerShown: false
-}
+  headerShown: false,
+};
 
 const mainStack = () => {
-    return (
-        <>
-            <Stack.Navigator screenOptions={screenOptions}>
-                <Stack.Screen name="Preload" component={Preload} />
-                <Stack.Screen name="Login" component={Login} />
-                <Stack.Screen name="Register" component={Register} />
-            </Stack.Navigator>
-        </>
-    )
-}
+  return (
+    <>
+      <Stack.Navigator screenOptions={screenOptions}>
+        <Stack.Screen name="Preload" component={Preload} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="MainTab" component={MainTab} />
+      </Stack.Navigator>
+    </>
+  );
+};
 
-export default mainStack
+export default mainStack;
