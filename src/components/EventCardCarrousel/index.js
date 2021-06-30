@@ -1,6 +1,6 @@
 import React from "react";
 import { FlatList, View } from "react-native";
-import { Title, Headline } from "react-native-paper";
+import { Headline } from "react-native-paper";
 
 import EventCard from "../EventCard";
 
@@ -29,8 +29,10 @@ const data = [
 
 const EventCardCarrousel = () => {
   return (
-    <View style={{ marginVertical: 20 }}>
-      <Headline style={{ fontWeight: "bold" }}>Em Alta</Headline>
+    <View>
+      <Headline style={{ fontWeight: "bold", marginVertical: 20 }}>
+        Em Alta
+      </Headline>
       <FlatList
         data={data}
         horizontal

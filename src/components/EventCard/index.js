@@ -15,7 +15,7 @@ const Rating1 = () => (
 );
 
 const MyComponent = () => (
-  <Card style={{ marginTop: 25, width: 250, marginRight: 20 }}>
+  <Card style={{ width: 250, marginRight: 20 }}>
     <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
     <Card.Title
       title="Headline 5"

@@ -6,6 +6,7 @@ import Searchbar from "../../components/Searchbar";
 import CategoryCarrousel from "../../components/CategoryCarrousel";
 import SpotlightCarrousel from "../../components/SpotlightCarrousel";
 import EventCardCarrousel from "../../components/EventCardCarrousel";
+import OfferButtonCarrousel from "../../components/OfferButtonCarrousel";
 
 const data = [
   {
@@ -55,7 +56,11 @@ const Home = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <Searchbar value={searchQuery} onChange={onChangeSearch} />
         <SpotlightCarrousel cards={data} />
+        <OfferButtonCarrousel />
         <CategoryCarrousel data={data1} />
+        <EventCardCarrousel />
+        <EventCardCarrousel />
+        <EventCardCarrousel />
         <EventCardCarrousel />
       </ScrollView>
     </Container>
