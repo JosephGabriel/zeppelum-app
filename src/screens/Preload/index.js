@@ -6,11 +6,12 @@ import { useSelector } from "react-redux";
 import { ImageContainer, Logo } from "./styles";
 
 import Container from "../../components/Container";
+import { selectCurrentUser } from "../../redux/user/userSelector";
 
 const Preload = () => {
   const navigation = useNavigation();
 
-  const user = useSelector(({ user }) => user.currentUser);
+  const user = useSelector(selectCurrentUser);
 
   useEffect(() => {
     setTimeout(() => {

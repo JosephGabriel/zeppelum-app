@@ -1,14 +1,35 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import * as React from "react";
+import { AirbnbRating } from "react-native-ratings";
+import { Card, Paragraph } from "react-native-paper";
 
-import { } from './styles'
+const Rating1 = () => (
+  <AirbnbRating
+    count={5}
+    reviews={["Terrible", "Bad", "Meh", "OK", "Good"]}
+    defaultRating={3}
+    size={10}
+    isDisabled
+    showRating={false}
+    selectedColor="#6200EE"
+  />
+);
 
-const EventCard = () => {
-    return (
-        <View>
-            <Text></Text>
-        </View>
-    )
-}
+const MyComponent = () => (
+  <Card style={{ marginTop: 25, width: 250, marginRight: 20 }}>
+    <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
+    <Card.Title
+      title="Headline 5"
+      subtitle="R$ 1,200.00"
+      subtitleStyle={{ color: "#6200EE" }}
+      right={Rating1}
+    />
+    <Card.Content>
+      <Paragraph>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor
+      </Paragraph>
+    </Card.Content>
+  </Card>
+);
 
-export default EventCard
+export default MyComponent;
