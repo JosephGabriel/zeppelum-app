@@ -22,6 +22,8 @@ export function* registerUserAsync({ payload: { user } }) {
       email: user.email,
       lastName: user.lastName,
       createdAt: user.createdAt,
+      type:"user",
+      avatar: "https://www.mantruckandbus.com/fileadmin/_processed_/1/1/csm_man-holger-von-der-heide-interview-header_3dc7c2e575.jpg"
     });
 
     const userRef = yield firestore.doc(`/users/${data.user.uid}`);

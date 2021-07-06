@@ -4,13 +4,13 @@ import { Chip } from "react-native-paper";
 
 import { Container } from "./styles";
 
-const CategoryItem = ({ name, icon, index }) => {
+const CategoryItem = ({ name, icon, index,category }) => {
   const [selected, setSelected] = useState(false);
 
   const navigation = useNavigation();
 
   const onPress = () => {
-    navigation.navigate("");
+    navigation.navigate("CategoryResults",{ name });
   };
 
   return (

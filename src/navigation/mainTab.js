@@ -2,7 +2,7 @@ import React from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import Home from '../screens/Home'
+import HomeStack from './homeStack'
 import Cart from '../screens/Cart'
 import Profile from '../screens/Profile'
 import Favorites from '../screens/Favorites'
@@ -34,7 +34,7 @@ const MainTab = () => {
                 activeTintColor: '#6200EE',
                 inactiveTintColor: '#686868',
             }}>
-            <Tab.Screen name="Home" component={Home} />
+            <Tab.Screen name="Home" component={HomeStack} />
             <Tab.Screen name="Carrinho" component={Cart} />
             <Tab.Screen name="Favoritos" component={Favorites} />
             <Tab.Screen name="Perfil" component={Profile} />

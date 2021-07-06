@@ -20,7 +20,7 @@ const mainStack = () => {
         <Stack.Screen name="Preload" component={Preload} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
-        <Stack.Screen name="MainTab" component={MainTab} />
+        <Stack.Screen name="MainTab" component={MainTab} /> 
       </Stack.Navigator>
     </>
   );

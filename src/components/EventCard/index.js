@@ -1,6 +1,7 @@
 import * as React from "react";
 import { AirbnbRating } from "react-native-ratings";
 import { Card, Paragraph } from "react-native-paper";
+import { Container,Cover } from "./styles";
 
 const Rating1 = () => (
   <AirbnbRating
@@ -14,22 +15,24 @@ const Rating1 = () => (
   />
 );
 
-const MyComponent = () => (
-  <Card style={{ width: 250, marginRight: 20 }}>
-    <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
+const _Card = ({hasContent}) => (
+  <Container>
+    <Cover source={{ uri: "https://picsum.photos/700" }} />
     <Card.Title
       title="Headline 5"
       subtitle="R$ 1,200.00"
       subtitleStyle={{ color: "#6200EE" }}
       right={Rating1}
     />
-    <Card.Content>
+    {
+    hasContent ? <Card.Content>
       <Paragraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor
       </Paragraph>
-    </Card.Content>
-  </Card>
+    </Card.Content> : null
+    }
+  </Container>
 );
 
-export default MyComponent;
+export default _Card;

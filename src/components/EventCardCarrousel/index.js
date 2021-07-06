@@ -27,16 +27,20 @@ const data = [
   },
 ];
 
-const EventCardCarrousel = () => {
+const EventCardCarrousel = ({isTitled,hasContent}) => {
   return (
     <View>
+      {
+        isTitled ? 
       <Headline style={{ fontWeight: "bold", marginVertical: 20 }}>
         Em Alta
-      </Headline>
+      </Headline> : null
+      }
       <FlatList
         data={data}
+        showsHorizontalScrollIndicator={false}
         horizontal
-        renderItem={({ item }) => <EventCard />}
+        renderItem={({ item }) => <EventCard hasContent />}
       />
     </View>
   );

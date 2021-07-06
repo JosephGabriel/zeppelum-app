@@ -58,10 +58,10 @@ const Home = () => {
         <SpotlightCarrousel cards={data} />
         <OfferButtonCarrousel />
         <CategoryCarrousel data={data1} />
-        <EventCardCarrousel />
-        <EventCardCarrousel />
-        <EventCardCarrousel />
-        <EventCardCarrousel />
+        <EventCardCarrousel isTitled hasContent />
+        <EventCardCarrousel isTitled hasContent />
+        <EventCardCarrousel isTitled hasContent />
+        <EventCardCarrousel isTitled hasContent />
       </ScrollView>
     </Container>
   );

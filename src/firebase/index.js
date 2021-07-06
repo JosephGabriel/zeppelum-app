@@ -4,12 +4,13 @@ import "firebase/firestore";
 import "firebase/storage";
 
 const config = {
-  apiKey: "AIzaSyD4o_5TCqH1DMjgkT5QlqDfGOYwXJPJLKc",
-  authDomain: "zeppelum.firebaseapp.com",
-  projectId: "zeppelum",
-  storageBucket: "zeppelum.appspot.com",
-  messagingSenderId: "553676065918",
-  appId: "1:553676065918:web:2a1a7b7bb3401f99479c2f",
+  apiKey: "AIzaSyCYzctV2tgis_nfVU1VK2MnVPYvovJ2mqE",
+  authDomain: "zeppelum-app.firebaseapp.com",
+  projectId: "zeppelum-app",
+  storageBucket: "zeppelum-app.appspot.com",
+  messagingSenderId: "1081639105093",
+  appId: "1:1081639105093:web:d1d79894d6d4950845e92c",
+  measurementId: "G-7F06J5HG2K"
 };
 
 firebase.initializeApp(config);
