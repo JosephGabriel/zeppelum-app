@@ -26,7 +26,7 @@ const data = [
 const CategoryResults = ({ route }) => {
   const { name } = route.params;
   return (
-    <View padding={20}>
+    <View>
       <CategoryCarrousel data={data} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <EventCardCarrousel />

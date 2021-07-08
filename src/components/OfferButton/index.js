@@ -12,7 +12,7 @@ const OfferButton = ({ price }) => {
   };
   return (
     <Pressable onPress={onPress}>
-      <SurfaceContainer>
+      <SurfaceContainer mode="outlined">
         <Text>
           {price}
           <Percentage>%</Percentage>

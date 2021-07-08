@@ -41,7 +41,7 @@ const EventDetails = ({ item }) => {
           only.
         </Paragraph>
       </View>
-      <Container padding={20} background="#eee">
+      <Container background="#efefef">
         <EventCardCarrousel isTitled />
       </Container>
     </ScrollView>
