@@ -56,8 +56,8 @@ const Home = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <Searchbar value={searchQuery} onChange={onChangeSearch} />
         <SpotlightCarrousel cards={data} />
-        <OfferButtonCarrousel />
         <CategoryCarrousel data={data1} />
+        <OfferButtonCarrousel />
         <EventCardCarrousel isTitled hasContent />
         <EventCardCarrousel isTitled hasContent />
         <EventCardCarrousel isTitled hasContent />

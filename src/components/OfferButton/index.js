@@ -1,17 +1,25 @@
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 import { Pressable } from "react-native";
 
 import { SurfaceContainer, Text, Percentage } from "./styles";
 
-const OfferButton = ({ price, onPress }) => (
-  <Pressable onPress={onPress}>
-    <SurfaceContainer>
-      <Text>
-        {price}
-        <Percentage>%</Percentage>
-      </Text>
-    </SurfaceContainer>
-  </Pressable>
-);
+const OfferButton = ({ price }) => {
+  const navigation = useNavigation();
+
+  const onPress = () => {
+    navigation.navigate("OfferResults");
+  };
+  return (
+    <Pressable onPress={onPress}>
+      <SurfaceContainer>
+        <Text>
+          {price}
+          <Percentage>%</Percentage>
+        </Text>
+      </SurfaceContainer>
+    </Pressable>
+  );
+};
 
 export default OfferButton;
