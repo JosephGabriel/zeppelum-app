@@ -6,6 +6,10 @@ import { TextInput } from "react-native-paper";
 
 import Container from "../../components/Container";
 import { loginUserStart } from "../../redux/user/userActions";
+import {
+  selectLoginLoading,
+  selectCurrentUser,
+} from "../../redux/user/userSelector";
 
 import {
   TextContainer,
@@ -20,8 +24,8 @@ import {
 
 const Login = () => {
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.user.loading);
-  const user = useSelector((state) => state.user.currentUser);
+  const loading = useSelector(selectLoginLoading);
+  const user = useSelector(selectCurrentUser);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -51,6 +55,7 @@ const Login = () => {
         <Input
           mode="outlined"
           label="Email"
+          autoCapitalize="none"
           value={email}
           keyboardType="email-address"
           onChangeText={(email) => setEmail(email)}
@@ -59,6 +64,7 @@ const Login = () => {
         <Input
           mode="outlined"
           label="Senha"
+          autoCapitalize="none"
           value={password}
           secureTextEntry={hidden}
           onChangeText={(password) => setPassword(password)}

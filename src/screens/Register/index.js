@@ -5,6 +5,10 @@ import { TouchableOpacity, ScrollView } from "react-native";
 import { TextInput } from "react-native-paper";
 
 import { registerUserStart } from "../../redux/user/userActions";
+import {
+  selectCurrentUser,
+  selectRegisterLoading,
+} from "../../redux/user/userSelector";
 import Container from "../../components/Container";
 
 import {
@@ -20,8 +24,8 @@ import {
 
 const Register = () => {
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.user.loadingRegister);
-  const user = useSelector((state) => state.user.currentUser);
+  const loading = useSelector(selectRegisterLoading);
+  const user = useSelector(selectCurrentUser);
 
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -75,6 +79,7 @@ const Register = () => {
             mode="outlined"
             label="Email"
             value={email}
+            autoCapitalize="none"
             keyboardType="email-address"
             onChangeText={(email) => setEmail(email)}
             left={<TextInput.Icon name="email" color="gray" />}
@@ -83,6 +88,7 @@ const Register = () => {
           <Input
             mode="outlined"
             label="Senha"
+            autoCapitalize="none"
             value={password}
             secureTextEntry={hidden}
             onChangeText={(password) => setPassword(password)}
@@ -101,6 +107,7 @@ const Register = () => {
           <Input
             mode="outlined"
             label="Confirmar senha"
+            autoCapitalize="none"
             value={confirmPassword}
             secureTextEntry={hiddenConfirm}
             onChangeText={(confirmPassword) =>
