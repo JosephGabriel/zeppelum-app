@@ -1,5 +1,6 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Pressable } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { useSelector, useDispatch } from "react-redux";
 import { Title, Avatar, Button, List, Subheading } from "react-native-paper";
 
@@ -10,6 +11,7 @@ import { selectCurrentUser } from "../../redux/user/userSelector";
 const Profile = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectCurrentUser);
+  const navigation = useNavigation();
 
   const userName = `${user.name} ${user.lastName}`;
   const userNameAlt =
@@ -24,14 +26,18 @@ const Profile = () => {
       <View style={{ flex: 1, justifyContent: "space-evenly" }}>
         <View style={{ alignSelf: "center", alignItems: "center" }}>
           {user.avatar ? (
-            <Avatar.Image
-              size={100}
-              source={{
-                uri: user.avatar,
-              }}
-            />
+            <Pressable onPress={() => navigation.navigate("Camera")}>
+              <Avatar.Image
+                size={100}
+                source={{
+                  uri: user.avatar,
+                }}
+              />
+            </Pressable>
           ) : (
-            <Avatar.Icon size={100} icon="account" />
+            <Pressable onPress={() => navigation.navigate("Camera")}>
+              <Avatar.Icon size={100} icon="account" />
+            </Pressable>
           )}
           <Title style={{ fontWeight: "bold" }}>{userName}</Title>
           <Subheading style={{ margin: 0 }}>{userNameAlt}</Subheading>

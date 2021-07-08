@@ -26,7 +26,7 @@ const data = [
 const CategoryResults = ({ route }) => {
   const { name } = route.params;
   return (
-    <View>
+    <View style={{ backgroundColor: "#fff" }}>
       <CategoryCarrousel data={data} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <EventCardCarrousel />
