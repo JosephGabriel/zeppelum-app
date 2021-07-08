@@ -1,29 +1,41 @@
 import { takeLatest, put, all, call } from "redux-saga/effects";
 
+import { auth, firestore } from "../../firebase";
 import { userTypes } from "./userTypes";
+
 import {
   loginUserFailure,
   loginUserSuccess,
   registerUserSuccess,
   registerUserFailure,
+  logoutUserSuccess,
+  logoutUserFailure,
 } from "./userActions";
-import { auth, firestore } from "../../firebase";
+
+export function* logoutUserAsync() {
+  try {
+    yield auth.signOut();
+
+    yield put(logoutUserSuccess());
+  } catch (error) {
+    yield put(logoutUserFailure(error));
+  }
+}
 
 export function* registerUserAsync({ payload: { user } }) {
   try {
     const data = yield auth.createUserWithEmailAndPassword(
-      user.email,
-      user.password
+      user.email.trim(),
+      user.password.trim()
     );
 
     yield firestore.collection("users").doc(data.user.uid).set({
       id: data.user.uid,
-      name: user.name,
-      email: user.email,
-      lastName: user.lastName,
+      name: user.name.trim(),
+      email: user.email.trim(),
+      lastName: user.lastName.trim(),
       createdAt: user.createdAt,
-      type:"user",
-      avatar: "https://www.mantruckandbus.com/fileadmin/_processed_/1/1/csm_man-holger-von-der-heide-interview-header_3dc7c2e575.jpg"
+      type: "user",
     });
 
     const userRef = yield firestore.doc(`/users/${data.user.uid}`);
@@ -54,6 +66,10 @@ export function* loginUserAsync({ payload: { email, password } }) {
   }
 }
 
+export function* onLogoutUserStart() {
+  yield takeLatest(userTypes.LOGOUT_USER_START, logoutUserAsync);
+}
+
 export function* onRegisterUserStart() {
   yield takeLatest(userTypes.REGISTER_USER_START, registerUserAsync);
 }
@@ -63,5 +79,9 @@ export function* onLoginUserStart() {
 }
 
 export function* userSagas() {
-  yield all([call(onRegisterUserStart), call(onLoginUserStart)]);
+  yield all([
+    call(onRegisterUserStart),
+    call(onLoginUserStart),
+    call(onLogoutUserStart),
+  ]);
 }
