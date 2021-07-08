@@ -8,6 +8,7 @@ const CategoryCarrousel = ({ data }) => {
     <View
       style={{
         alignItems: "center",
+        marginHorizontal: 20,
       }}
     >
       <FlatList

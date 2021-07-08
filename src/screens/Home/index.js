@@ -52,7 +52,7 @@ const Home = () => {
   const onChangeSearch = (query) => setSearchQuery(query);
 
   return (
-    <Container padding={20}>
+    <Container>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Searchbar value={searchQuery} onChange={onChangeSearch} />
         <SpotlightCarrousel cards={data} />

@@ -7,8 +7,6 @@ export const SurfaceContainer = styled(Surface)`
   align-items: center;
   justify-content: center;
   elevation: 4;
-  margin: 20px 0;
-  margin-bottom: 0px;
   margin-right: 10px;
   border-radius: 5px;
   overflow: hidden;

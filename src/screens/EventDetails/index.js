@@ -1,12 +1,6 @@
 import React from "react";
 import { View, Image, ScrollView } from "react-native";
-import {
-  Subheading,
-  Headline,
-  Chip,
-  Button,
-  Paragraph,
-} from "react-native-paper";
+import { Subheading, Title, Chip, Button, Paragraph } from "react-native-paper";
 
 import Container from "../../components/Container";
 import EventCardCarrousel from "../../components/EventCardCarrousel";
@@ -29,7 +23,7 @@ const EventDetails = ({ item }) => {
             marginBottom: 15,
           }}
         >
-          <Headline style={{ fontWeight: "600" }}>Artes & Matemática</Headline>
+          <Title style={{ fontWeight: "600" }}>Artes & Matemática</Title>
           <Subheading style={{ fontWeight: "bold", color: "#6200EE" }}>
             R$150,00
           </Subheading>

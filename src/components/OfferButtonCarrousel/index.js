@@ -28,7 +28,7 @@ const data = [
 
 const OfferButtonCarrousel = () => {
   return (
-    <View>
+    <View style={{ marginHorizontal: 20 }}>
       <FlatList
         showsHorizontalScrollIndicator={false}
         data={data}

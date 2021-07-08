@@ -1,7 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
-import { Headline, Avatar, Button, List, Subheading } from "react-native-paper";
+import { Title, Avatar, Button, List, Subheading } from "react-native-paper";
 
 import Container from "../../components/Container";
 import { logoutUserStart } from "../../redux/user/userActions";
@@ -20,9 +20,7 @@ const Profile = () => {
 
   return (
     <Container padding={26} paddingBottom={10}>
-      <Headline style={{ fontWeight: "bold", marginTop: 20 }}>
-        Meu Perfil
-      </Headline>
+      <Title style={{ fontWeight: "bold", marginTop: 20 }}>Meu Perfil</Title>
       <View style={{ flex: 1, justifyContent: "space-evenly" }}>
         <View style={{ alignSelf: "center", alignItems: "center" }}>
           {user.avatar ? (
@@ -35,7 +33,7 @@ const Profile = () => {
           ) : (
             <Avatar.Icon size={100} icon="account" />
           )}
-          <Headline style={{ fontWeight: "bold" }}>{userName}</Headline>
+          <Title style={{ fontWeight: "bold" }}>{userName}</Title>
           <Subheading style={{ margin: 0 }}>{userNameAlt}</Subheading>
         </View>
         <View>
