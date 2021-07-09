@@ -44,19 +44,19 @@ const Profile = () => {
         </View>
         <View>
           <List.Item
-            title="First Item"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-            left={(props) => <List.Icon {...props} icon="folder" />}
+            title="Meus Eventos"
+            description="Assista seus eventos"
+            left={(props) => <List.Icon {...props} icon="calendar" />}
           />
           <List.Item
-            title="First Item"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-            left={(props) => <List.Icon {...props} icon="folder" />}
+            title="Meus Cartões"
+            description="Gerencie seus cartões de pagamentos"
+            left={(props) => <List.Icon {...props} icon="credit-card" />}
           />
           <List.Item
-            title="First Item"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-            left={(props) => <List.Icon {...props} icon="folder" />}
+            title="Meus Ingressos"
+            description="Tenha acesso a seus ingressos"
+            left={(props) => <List.Icon {...props} icon="ticket" />}
           />
         </View>
         <Button mode="contained" onPress={() => dispatch(logoutUserStart())}>
