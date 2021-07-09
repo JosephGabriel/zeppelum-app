@@ -22,8 +22,6 @@ const MainTab = () => {
             iconName = "basket";
           } else if (route.name === "Favoritos") {
             iconName = "heart";
-          } else if (route.name === "Eventos") {
-            iconName = "ticket";
           } else if (route.name === "Perfil") {
             iconName = "account-circle";
           }
@@ -40,7 +38,6 @@ const MainTab = () => {
     >
       <Tab.Screen name="Home" component={HomeStack} />
       <Tab.Screen name="Carrinho" component={Cart} />
-      <Tab.Screen name="Eventos" component={Cart} />
       <Tab.Screen name="Favoritos" component={Favorites} />
       <Tab.Screen name="Perfil" component={ProfileStack} />
     </Tab.Navigator>
