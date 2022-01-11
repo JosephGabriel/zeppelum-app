@@ -25,23 +25,12 @@ import {
 const Login = () => {
   const dispatch = useDispatch();
   const loading = useSelector(selectLoginLoading);
-  const user = useSelector(selectCurrentUser);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [hidden, setHidden] = useState(true);
 
   const navigation = useNavigation();
-
-  useEffect(() => {
-    setTimeout(() => {
-      user
-        ? navigation.reset({
-            routes: [{ name: "MainTab" }],
-          })
-        : null;
-    });
-  }, [user]);
 
   return (
     <Container center>

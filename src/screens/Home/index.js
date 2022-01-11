@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { ScrollView } from "react-native";
 
 import Container from "../../components/Container";
@@ -7,6 +8,8 @@ import CategoryCarrousel from "../../components/CategoryCarrousel";
 import SpotlightCarrousel from "../../components/SpotlightCarrousel";
 import EventCardCarrousel from "../../components/EventCardCarrousel";
 import OfferButtonCarrousel from "../../components/OfferButtonCarrousel";
+
+import { fetchEventsStart } from "../../redux/events/eventActions";
 
 const data = [
   {
@@ -51,6 +54,13 @@ const Home = () => {
 
   const onChangeSearch = (query) => setSearchQuery(query);
 
+  // const dispatch = useDispatch();
+  // const events = useSelector((state) => state.events.events);
+
+  // useEffect(() => {
+  //   dispatch(fetchEventsStart());
+  // }, []);
+
   return (
     <Container>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -58,9 +68,6 @@ const Home = () => {
         <SpotlightCarrousel cards={data} />
         <CategoryCarrousel data={data1} />
         <OfferButtonCarrousel />
-        <EventCardCarrousel isTitled hasContent />
-        <EventCardCarrousel isTitled hasContent />
-        <EventCardCarrousel isTitled hasContent />
         <EventCardCarrousel isTitled hasContent />
       </ScrollView>
     </Container>

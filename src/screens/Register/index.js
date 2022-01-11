@@ -38,16 +38,6 @@ const Register = () => {
 
   const navigation = useNavigation();
 
-  useEffect(() => {
-    setTimeout(() => {
-      user
-        ? navigation.reset({
-            routes: [{ name: "MainTab" }],
-          })
-        : null;
-    });
-  }, [user]);
-
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <Container center>

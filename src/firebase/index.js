@@ -9,8 +9,8 @@ const config = {
   projectId: "zeppelum-app",
   storageBucket: "zeppelum-app.appspot.com",
   messagingSenderId: "1081639105093",
-  appId: "1:1081639105093:web:d1d79894d6d4950845e92c",
-  measurementId: "G-7F06J5HG2K"
+  appId: "1:1081639105093:web:a07858902b0d5cfd45e92c",
+  measurementId: "G-JK031R8L2T",
 };
 
 firebase.initializeApp(config);
