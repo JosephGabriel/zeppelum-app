@@ -14,6 +14,7 @@ const SpotlightCarrousel = ({ cards }) => {
       <FlatList
         data={cards}
         horizontal
+        keyExtractor={(item, index) => item.id.toString()}
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => <SpotlightContainer uri={item.uri} />}
       />

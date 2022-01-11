@@ -13,6 +13,8 @@ const Profile = () => {
   const user = useSelector(selectCurrentUser);
   const navigation = useNavigation();
 
+  console.warn({ user });
+
   const userName = `${user.name} ${user.lastName}`;
   const userNameAlt =
     `@${user.name.toLowerCase()}${user.lastName.toLowerCase()}`

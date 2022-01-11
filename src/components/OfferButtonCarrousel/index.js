@@ -32,6 +32,7 @@ const OfferButtonCarrousel = () => {
       <FlatList
         showsHorizontalScrollIndicator={false}
         data={data}
+        keyExtractor={(item, index) => item.id.toString()}
         horizontal
         renderItem={({ item }) => <OfferButton {...item} />}
       />

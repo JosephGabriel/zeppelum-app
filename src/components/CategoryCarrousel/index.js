@@ -15,6 +15,7 @@ const CategoryCarrousel = ({ data }) => {
         data={data}
         horizontal
         showsHorizontalScrollIndicator={false}
+        keyExtractor={(item, index) => item.id.toString()}
         renderItem={({ item, index }) => (
           <CategoryItem {...item} index={index} />
         )}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ScrollView } from "react-native";
+import { selectCurrentUser } from "../../redux/user/userSelector";
 
 import Container from "../../components/Container";
 import Searchbar from "../../components/Searchbar";
@@ -8,8 +9,6 @@ import CategoryCarrousel from "../../components/CategoryCarrousel";
 import SpotlightCarrousel from "../../components/SpotlightCarrousel";
 import EventCardCarrousel from "../../components/EventCardCarrousel";
 import OfferButtonCarrousel from "../../components/OfferButtonCarrousel";
-
-import { fetchEventsStart } from "../../redux/events/eventActions";
 
 const data = [
   {
@@ -30,7 +29,7 @@ const data = [
   },
 ];
 
-const data1 = [
+const chips = [
   {
     id: 1,
     name: "Infraestrutura",
@@ -51,22 +50,17 @@ const data1 = [
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
-
+  const user = useSelector(selectCurrentUser);
   const onChangeSearch = (query) => setSearchQuery(query);
 
-  // const dispatch = useDispatch();
-  // const events = useSelector((state) => state.events.events);
-
-  // useEffect(() => {
-  //   dispatch(fetchEventsStart());
-  // }, []);
+  console.warn(user);
 
   return (
     <Container>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Searchbar value={searchQuery} onChange={onChangeSearch} />
         <SpotlightCarrousel cards={data} />
-        <CategoryCarrousel data={data1} />
+        <CategoryCarrousel data={chips} />
         <OfferButtonCarrousel />
         <EventCardCarrousel isTitled hasContent />
       </ScrollView>

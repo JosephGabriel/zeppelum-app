@@ -57,7 +57,8 @@ export function* loginUserAsync({ payload: { email, password } }) {
     const userRef = yield firestore.doc(`/users/${user.uid}`);
 
     const snapshot = yield userRef.get();
-    const userAuth = { id: snapshot.id, ...snapshot.data() };
+
+    const userAuth = { ...snapshot.data() };
 
     yield put(loginUserSuccess(userAuth));
   } catch (error) {
