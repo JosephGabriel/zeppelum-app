@@ -1,29 +1,32 @@
 import React from "react";
 import { View, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Title, Avatar, Button, List, Subheading } from "react-native-paper";
 
-import Container from "../../components/Container";
-import { logoutUserStart } from "../../redux/user/userActions";
-import { selectCurrentUser } from "../../redux/user/userSelector";
+import { useAppSelector } from "../../redux/store";
+
+import { logOutUser } from "../../redux/reducers/users";
+
+import { Container } from "./styles";
 
 const Profile = () => {
   const dispatch = useDispatch();
-  const user = useSelector(selectCurrentUser);
   const navigation = useNavigation();
-
-  console.warn({ user });
+  const user = useAppSelector((state) => state.user.currentUser);
 
   const userName = `${user.name} ${user.lastName}`;
+
   const userNameAlt =
     `@${user.name.toLowerCase()}${user.lastName.toLowerCase()}`
       .replace(" ", "")
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
 
+  const logOut = () => dispatch(logOutUser());
+
   return (
-    <Container padding={26} paddingBottom={10}>
+    <Container>
       <Title style={{ fontWeight: "bold", marginTop: 20 }}>Meu Perfil</Title>
       <View style={{ flex: 1, justifyContent: "space-evenly" }}>
         <View style={{ alignSelf: "center", alignItems: "center" }}>
@@ -46,22 +49,28 @@ const Profile = () => {
         </View>
         <View>
           <List.Item
+            hasTVPreferredFocus={false}
+            tvParallaxProperties={false}
             title="Meus Eventos"
             description="Assista seus eventos"
             left={(props) => <List.Icon {...props} icon="calendar" />}
           />
           <List.Item
+            hasTVPreferredFocus={false}
+            tvParallaxProperties={false}
             title="Meus Cartões"
             description="Gerencie seus cartões de pagamentos"
             left={(props) => <List.Icon {...props} icon="credit-card" />}
           />
           <List.Item
+            hasTVPreferredFocus={false}
+            tvParallaxProperties={false}
             title="Meus Ingressos"
             description="Tenha acesso a seus ingressos"
             left={(props) => <List.Icon {...props} icon="ticket" />}
           />
         </View>
-        <Button mode="contained" onPress={() => dispatch(logoutUserStart())}>
+        <Button mode="contained" onPress={logOut}>
           Sair
         </Button>
       </View>

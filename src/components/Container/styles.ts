@@ -1,6 +1,10 @@
 import styled from "styled-components/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+interface ContainerProps {
+  center: boolean;
+}
+
 const center = () => {
   return `
         justify-content: center;
@@ -8,7 +12,7 @@ const center = () => {
     `;
 };
 
-const getCenter = (props) => {
+const getCenter = (props: ContainerProps) => {
   if (props.center) {
     return center;
   }
@@ -16,7 +20,7 @@ const getCenter = (props) => {
   return null;
 };
 
-export const ContainerHolder = styled(SafeAreaView)`
+export const ContainerHolder = styled<ContainerProps>(SafeAreaView)`
   flex: 1;
   padding: ${({ padding }) => (padding ? `${padding}px` : "0px")};
   padding-bottom: ${({ paddingBottom }) =>

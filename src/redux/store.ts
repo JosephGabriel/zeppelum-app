@@ -7,6 +7,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { rootReducer } from "./reducers";
 
 import { rootSaga } from "./sagas";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -25,3 +26,9 @@ export const store = configureStore({
 export const persistor = persistStore(store);
 
 sagaMiddleware.run(rootSaga);
+
+type RootState = ReturnType<typeof store.getState>;
+type AppDispatch = typeof store.dispatch;
+
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

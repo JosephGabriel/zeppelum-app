@@ -1,9 +1,11 @@
 import { combineReducers } from "@reduxjs/toolkit";
 
-import userReducer from "../user/userReducer";
-import eventReducer from "../events/eventReducer";
+import { usersReducer } from "./users";
+import { eventsReducer } from "./events";
+import { cartReducer } from "./cart";
 
 export const rootReducer = combineReducers({
-  user: userReducer,
-  event: eventReducer,
+  user: usersReducer,
+  event: eventsReducer,
+  cart: cartReducer,
 });

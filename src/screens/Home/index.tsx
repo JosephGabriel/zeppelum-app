@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
 import { ScrollView } from "react-native";
-import { selectCurrentUser } from "../../redux/user/userSelector";
 
 import Container from "../../components/Container";
 import Searchbar from "../../components/Searchbar";
@@ -9,6 +7,7 @@ import CategoryCarrousel from "../../components/CategoryCarrousel";
 import SpotlightCarrousel from "../../components/SpotlightCarrousel";
 import EventCardCarrousel from "../../components/EventCardCarrousel";
 import OfferButtonCarrousel from "../../components/OfferButtonCarrousel";
+import { useAppSelector } from "../../redux/store";
 
 const data = [
   {
@@ -50,10 +49,8 @@ const chips = [
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const user = useSelector(selectCurrentUser);
+  const user = useAppSelector((state) => state.user.currentUser);
   const onChangeSearch = (query) => setSearchQuery(query);
-
-  console.warn(user);
 
   return (
     <Container>

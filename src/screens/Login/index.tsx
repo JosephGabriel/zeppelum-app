@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { TextInput } from "react-native-paper";
 
+import { useAppSelector } from "../../redux/store";
+
 import Container from "../../components/Container";
-import { loginUserStart } from "../../redux/user/userActions";
-import {
-  selectLoginLoading,
-  selectCurrentUser,
-} from "../../redux/user/userSelector";
+
+import { loginUserStart } from "../../redux/reducers/users";
 
 import {
   TextContainer,
@@ -24,7 +23,8 @@ import {
 
 const Login = () => {
   const dispatch = useDispatch();
-  const loading = useSelector(selectLoginLoading);
+
+  const loading = useAppSelector(({ user }) => user.loading);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,6 +40,7 @@ const Login = () => {
           source={require("../../../assets/logo.jpg")}
         />
       </ImageContainer>
+
       <InputContainer>
         <Input
           mode="outlined"
@@ -48,8 +49,16 @@ const Login = () => {
           value={email}
           keyboardType="email-address"
           onChangeText={(email) => setEmail(email)}
-          left={<TextInput.Icon name="email" color="gray" />}
+          left={
+            <TextInput.Icon
+              hasTVPreferredFocus={false}
+              tvParallaxProperties={false}
+              name={"email"}
+              color="gray"
+            />
+          }
         />
+
         <Input
           mode="outlined"
           label="Senha"
@@ -57,10 +66,19 @@ const Login = () => {
           value={password}
           secureTextEntry={hidden}
           onChangeText={(password) => setPassword(password)}
-          left={<TextInput.Icon name="lock" color="gray" />}
+          left={
+            <TextInput.Icon
+              hasTVPreferredFocus={false}
+              tvParallaxProperties={false}
+              name="lock"
+              color="gray"
+            />
+          }
           right={
             password ? (
               <TextInput.Icon
+                hasTVPreferredFocus={false}
+                tvParallaxProperties={false}
                 onPress={() => setHidden(!hidden)}
                 name={hidden ? "eye" : "eye-off"}
                 color="gray"

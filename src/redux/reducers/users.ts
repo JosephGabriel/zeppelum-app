@@ -1,10 +1,34 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { AuthError, User as FirebaseUser } from "firebase/auth";
+import { AuthError } from "firebase/auth";
+
+interface User {
+  id: string;
+  avatar?: string;
+  name: string;
+  lastName: string;
+  createdAt: string;
+  type: "user";
+}
 
 interface InitialState {
   loading: boolean;
-  currentUser: FirebaseUser;
+  currentUser: User;
   error: AuthError;
+}
+
+interface LoginStartPayload {
+  email: string;
+  password: string;
+}
+
+interface RegisterUserPayload {
+  user: {
+    name: string;
+    lastName: string;
+    email: string;
+    password: string;
+    createdAt: number;
+  };
 }
 
 const initialState: InitialState = {
@@ -17,13 +41,13 @@ export const usersSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
-    registerUserStart: (state, action: PayloadAction) => {
+    registerUserStart: (state, action: PayloadAction<RegisterUserPayload>) => {
       state.loading = true;
     },
-    loginUserStart: (state) => {
+    loginUserStart: (state, action: PayloadAction<LoginStartPayload>) => {
       state.loading = true;
     },
-    loginUserSuccess: (state, action: PayloadAction<FirebaseUser>) => {
+    loginUserSuccess: (state, action: PayloadAction<User>) => {
       state.currentUser = action.payload;
       state.loading = false;
     },

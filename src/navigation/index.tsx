@@ -1,13 +1,14 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 
-import MainStack from "../navigation/mainStack";
-import MainTab from "../navigation/mainTab";
-import { selectCurrentUser } from "../redux/user/userSelector";
+import MainStack from "./mainStack";
+import MainTab from "./mainTab";
+
+import { useAppSelector } from "../redux/store";
 
 const Navigator = () => {
-  const user = useSelector(selectCurrentUser);
+  const user = useAppSelector((state) => state.user.currentUser);
+
   return (
     <NavigationContainer>
       {user ? <MainTab /> : <MainStack />}
