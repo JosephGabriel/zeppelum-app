@@ -7,6 +7,7 @@ export interface UserPayload {
   id: string;
   name: string;
   lastname: string;
+  avatar?: string;
 }
 
 export interface SignupUser {

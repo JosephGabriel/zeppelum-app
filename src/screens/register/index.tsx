@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
-import { TouchableOpacity, ScrollView, View } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-paper";
-
-import { registerUserStart } from "../../redux/reducers/users";
 
 import {
   TextContainer,
@@ -19,22 +16,37 @@ import {
   Container,
 } from "./styles";
 
-import { useAppSelector } from "../../redux/store";
+import { api } from "../../services/api";
 
-const Register = () => {
-  const dispatch = useDispatch();
-  const loading = useAppSelector((state) => state.user.loading);
-
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+export const RegisterScreen = () => {
+  const [name, setName] = useState("nome");
+  const [lastname, setLastName] = useState("nome");
+  const [email, setEmail] = useState("teste@teste.com");
+  const [password, setPassword] = useState("password");
+  const [confirmPassword, setConfirmPassword] = useState("password");
 
   const [hidden, setHidden] = useState(true);
   const [hiddenConfirm, setHiddenConfirm] = useState(true);
 
   const navigation = useNavigation();
+
+  const [signupUserApi, { isLoading }] = api.useSignupUserMutation();
+
+  const signupUser = async () => {
+    try {
+      const value = await signupUserApi({
+        email,
+        lastname,
+        name,
+        password,
+        passwordConfirm: confirmPassword,
+      });
+
+      console.warn(value);
+    } catch (error) {
+      console.warn(error);
+    }
+  };
 
   return (
     <ScrollContainer
@@ -70,7 +82,7 @@ const Register = () => {
             autoCompleteType={true}
             mode="outlined"
             label="Sobrenome"
-            value={lastName}
+            value={lastname}
             onChangeText={(lastName) => setLastName(lastName)}
             left={
               <TextInput.Icon
@@ -162,20 +174,8 @@ const Register = () => {
 
           <RegisterButton
             mode="contained"
-            loading={loading}
-            onPress={() =>
-              dispatch(
-                registerUserStart({
-                  user: {
-                    name,
-                    lastName,
-                    email,
-                    password,
-                    createdAt: Date.now(),
-                  },
-                })
-              )
-            }
+            loading={isLoading}
+            onPress={signupUser}
           >
             Registrar
           </RegisterButton>
@@ -191,5 +191,3 @@ const Register = () => {
     </ScrollContainer>
   );
 };
-
-export default Register;

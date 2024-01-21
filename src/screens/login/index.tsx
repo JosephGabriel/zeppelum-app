@@ -18,7 +18,7 @@ import {
 
 import { api } from "../../services/api";
 
-export const Login = () => {
+export const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [hidden, setHidden] = useState(true);

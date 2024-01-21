@@ -1,8 +1,8 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Camera from "../screens/Camera";
-import Profile from "../screens/Profile";
+import { CameraScreen } from "../screens/camera";
+import { ProfileScreen } from "../screens/profile";
 
 const Stack = createStackNavigator();
 
@@ -12,12 +12,12 @@ const mainStack = () => {
       <Stack.Navigator>
         <Stack.Screen
           name="Profile"
-          component={Profile}
+          component={ProfileScreen}
           options={{
             headerShown: false,
           }}
         />
-        <Stack.Screen name="Câmera" component={Camera} />
+        <Stack.Screen name="Câmera" component={CameraScreen} />
       </Stack.Navigator>
     </>
   );

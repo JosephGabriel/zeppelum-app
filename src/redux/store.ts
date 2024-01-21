@@ -1,4 +1,4 @@
-import { Tuple, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import { combineReducers } from "redux";
 
@@ -18,15 +18,14 @@ const persistConfig = {
   storage: AsyncStorage,
 };
 
-const persistedReducer = persistReducer(
-  persistConfig,
-  combineReducers({
-    user: usersReducer,
-    event: eventsReducer,
-    cart: cartReducer,
-    [api.reducerPath]: api.reducer,
-  })
-);
+const rootReducer = combineReducers({
+  user: usersReducer,
+  event: eventsReducer,
+  cart: cartReducer,
+  [api.reducerPath]: api.reducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,

@@ -10,15 +10,15 @@ import { logOutUser } from "../../redux/reducers/users";
 
 import { Container } from "./styles";
 
-const Profile = () => {
+export const ProfileScreen = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const user = useAppSelector((state) => state.user.currentUser);
 
-  const userName = `${user.name} ${user.lastName}`;
+  const userName = `${user.name} ${user.lastname}`;
 
   const userNameAlt =
-    `@${user.name.toLowerCase()}${user.lastName.toLowerCase()}`
+    `@${user.name.toLowerCase()}${user.lastname.toLowerCase()}`
       .replace(" ", "")
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
@@ -77,5 +77,3 @@ const Profile = () => {
     </Container>
   );
 };
-
-export default Profile;

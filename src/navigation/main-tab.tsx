@@ -2,14 +2,14 @@ import React from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import HomeStack from "./homeStack";
+import HomeStack from "./home-stack";
 import Cart from "../screens/Cart";
-import ProfileStack from "./profileStack";
+import ProfileStack from "./profile-stack";
 import Favorites from "../screens/Favorites";
 
 const Tab = createBottomTabNavigator();
 
-const MainTab = () => {
+export const MainTab = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -43,5 +43,3 @@ const MainTab = () => {
     </Tab.Navigator>
   );
 };
-
-export default MainTab;
