@@ -1,7 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 
-import MainStack from "./mainStack";
+import MainStack from "./main-stack";
 import MainTab from "./mainTab";
 
 import { useAppSelector } from "../redux/store";

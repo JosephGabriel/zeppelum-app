@@ -7,7 +7,7 @@ interface Props {
   center?: boolean;
   padding?: number;
   statusBar?: StatusBarStyle;
-  children?: React.ReactElement[];
+  children?: React.ReactElement | JSX.Element[] | Element[];
 }
 
 const Container: React.FC<Props> = ({ children, statusBar, ...props }) => {

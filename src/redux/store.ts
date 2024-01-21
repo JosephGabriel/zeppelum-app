@@ -1,31 +1,42 @@
 import { Tuple, configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
+import { combineReducers } from "redux";
 
-import createSagaMiddleware from "redux-saga";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { rootReducer } from "./reducers";
-
-import { rootSaga } from "./sagas";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { setupListeners } from "@reduxjs/toolkit/query";
 
-const sagaMiddleware = createSagaMiddleware();
+import { api } from "../services/api";
+
+import { usersReducer } from "./reducers/users";
+import { eventsReducer } from "./reducers/events";
+import { cartReducer } from "./reducers/cart";
 
 const persistConfig = {
   key: "root",
   storage: AsyncStorage,
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(
+  persistConfig,
+  combineReducers({
+    user: usersReducer,
+    event: eventsReducer,
+    cart: cartReducer,
+    [api.reducerPath]: api.reducer,
+  })
+);
 
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: () => new Tuple(sagaMiddleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(api.middleware),
 });
 
 export const persistor = persistStore(store);
 
-sagaMiddleware.run(rootSaga);
+setupListeners(store.dispatch);
 
 type RootState = ReturnType<typeof store.getState>;
 type AppDispatch = typeof store.dispatch;

@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
-import { useDispatch } from "react-redux";
 import { TextInput } from "react-native-paper";
 
-import { useAppSelector } from "../../redux/store";
-
 import Container from "../../components/Container";
-
-import { loginUserStart } from "../../redux/reducers/users";
 
 import {
   TextContainer,
@@ -21,16 +16,23 @@ import {
   Logo,
 } from "./styles";
 
-const Login = () => {
-  const dispatch = useDispatch();
+import { api } from "../../services/api";
 
-  const loading = useAppSelector(({ user }) => user.loading);
-
+export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [hidden, setHidden] = useState(true);
 
   const navigation = useNavigation();
+
+  const [loginUserMutation, { isLoading }] = api.useLoginUserMutation();
+
+  const loginUser = () => {
+    loginUserMutation({
+      email,
+      password,
+    });
+  };
 
   return (
     <Container center>
@@ -43,6 +45,7 @@ const Login = () => {
 
       <InputContainer>
         <Input
+          autoCompleteType={true}
           mode="outlined"
           label="Email"
           autoCapitalize="none"
@@ -60,6 +63,7 @@ const Login = () => {
         />
 
         <Input
+          autoCompleteType={false}
           mode="outlined"
           label="Senha"
           autoCapitalize="none"
@@ -87,11 +91,7 @@ const Login = () => {
           }
         />
 
-        <LoginButton
-          mode="contained"
-          loading={loading}
-          onPress={() => dispatch(loginUserStart({ email, password }))}
-        >
+        <LoginButton mode="contained" loading={isLoading} onPress={loginUser}>
           Fazer Login
         </LoginButton>
 
@@ -105,5 +105,3 @@ const Login = () => {
     </Container>
   );
 };
-
-export default Login;
