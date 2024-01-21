@@ -22,3 +22,12 @@ export interface AuthPayload {
   token: string;
   user: UserPayload;
 }
+
+export interface ErrorPayloadApi {
+  data: {
+    error: string;
+    message: string | string[];
+    statusCode: number;
+  };
+  status: number;
+}

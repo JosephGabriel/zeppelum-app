@@ -3,7 +3,12 @@ import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-paper";
 
+import { ErrorSnackBar } from "../../components/error-snackbar";
 import Container from "../../components/Container";
+
+import { api } from "../../services/api";
+
+import { ErrorPayloadApi } from "../../services/api.types";
 
 import {
   TextContainer,
@@ -16,12 +21,12 @@ import {
   Logo,
 } from "./styles";
 
-import { api } from "../../services/api";
-
 export const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [hidden, setHidden] = useState(true);
+
+  const [error, setError] = useState<ErrorPayloadApi>();
 
   const navigation = useNavigation();
 
@@ -31,11 +36,17 @@ export const LoginScreen = () => {
     loginUserMutation({
       email,
       password,
-    });
+    })
+      .unwrap()
+      .catch((error) => {
+        setError(error);
+      });
   };
 
   return (
     <Container center>
+      <ErrorSnackBar error={error} />
+
       <ImageContainer>
         <Logo
           resizeMode="contain"
