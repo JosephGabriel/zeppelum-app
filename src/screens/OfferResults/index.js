@@ -2,7 +2,7 @@ import React from "react";
 import { ScrollView, View } from "react-native";
 import Container from "../../components/Container";
 
-import EventCardCarrousel from "../../components/EventCardCarrousel";
+import EventCardCarrousel from "../../components/event-card-carousel";
 import OfferButtonCarrousel from "../../components/OfferButtonCarrousel";
 
 const CategoryResults = () => {

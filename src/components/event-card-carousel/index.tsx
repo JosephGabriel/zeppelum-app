@@ -3,31 +3,15 @@ import { FlatList, View } from "react-native";
 import { Title } from "react-native-paper";
 
 import EventCard from "../EventCard";
+import { FindAllEvents } from "../../services/api.types";
 
-const data = [
-  {
-    id: 1,
-    uri: "",
-  },
-  {
-    id: 2,
-    uri: "",
-  },
-  {
-    id: 3,
-    uri: "",
-  },
-  {
-    id: 4,
-    uri: "",
-  },
-  {
-    id: 5,
-    uri: "",
-  },
-];
+interface Props {
+  data: FindAllEvents[];
+  isTitled: boolean;
+  hasContent: boolean;
+}
 
-const EventCardCarrousel = ({ isTitled, hasContent }) => {
+const EventCardCarrousel = ({ isTitled, hasContent, data }: Props) => {
   return (
     <View style={{ marginHorizontal: 20 }}>
       {isTitled ? (
@@ -40,7 +24,7 @@ const EventCardCarrousel = ({ isTitled, hasContent }) => {
         keyExtractor={(item, index) => item.id.toString()}
         showsHorizontalScrollIndicator={false}
         horizontal
-        renderItem={({ item }) => <EventCard hasContent />}
+        renderItem={({ item }) => <EventCard item={item} hasContent />}
       />
     </View>
   );

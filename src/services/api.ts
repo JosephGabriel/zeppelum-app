@@ -1,6 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-import { AuthPayload, LoginUserApiArgs, SignupUser } from "./api.types";
+import {
+  AuthPayload,
+  LoginUserApiArgs,
+  SignupUser,
+  FindAllEvents,
+} from "./api.types";
 
 export const api = createApi({
   reducerPath: "api",
@@ -29,6 +34,11 @@ export const api = createApi({
           password,
           passwordConfirm,
         },
+      }),
+    }),
+    findAllEvents: builder.query<FindAllEvents[], undefined>({
+      query: () => ({
+        url: "events",
       }),
     }),
   }),

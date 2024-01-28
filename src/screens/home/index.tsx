@@ -5,9 +5,10 @@ import Container from "../../components/Container";
 import Searchbar from "../../components/Searchbar";
 import CategoryCarrousel from "../../components/CategoryCarrousel";
 import SpotlightCarrousel from "../../components/SpotlightCarrousel";
-import EventCardCarrousel from "../../components/EventCardCarrousel";
+import EventCardCarrousel from "../../components/event-card-carousel";
 import OfferButtonCarrousel from "../../components/OfferButtonCarrousel";
-import { useAppSelector } from "../../redux/store";
+
+import { api } from "../../services/api";
 
 const data = [
   {
@@ -47,10 +48,14 @@ const chips = [
   },
 ];
 
-const Home = () => {
+export const HomeScreen = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const user = useAppSelector((state) => state.user.currentUser);
+
   const onChangeSearch = (query) => setSearchQuery(query);
+
+  const { currentData } = api.useFindAllEventsQuery(undefined, {
+    refetchOnFocus: true,
+  });
 
   return (
     <Container>
@@ -59,10 +64,8 @@ const Home = () => {
         <SpotlightCarrousel cards={data} />
         <CategoryCarrousel data={chips} />
         <OfferButtonCarrousel />
-        <EventCardCarrousel isTitled hasContent />
+        <EventCardCarrousel data={currentData} isTitled hasContent />
       </ScrollView>
     </Container>
   );
 };
-
-export default Home;

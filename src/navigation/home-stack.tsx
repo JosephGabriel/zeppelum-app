@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Home from "../screens/Home";
+import { HomeScreen } from "../screens/home";
 import CategoryResults from "../screens/CategoryResults";
 import OfferResults from "../screens/OfferResults";
 import EventDetails from "../screens/EventDetails";
@@ -14,7 +14,7 @@ const homeStack = () => {
       <Stack.Navigator>
         <Stack.Screen
           name="HomeStack"
-          component={Home}
+          component={HomeScreen}
           options={{
             headerShown: false,
           }}

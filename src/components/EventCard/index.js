@@ -17,25 +17,22 @@ const Rating1 = () => (
   />
 );
 
-const _Card = ({ hasContent }) => {
+const _Card = ({ hasContent, item }) => {
   const navigation = useNavigation();
 
   return (
     <Pressable onPress={() => navigation.navigate("EventDetails")}>
       <Container>
-        <Cover source={{ uri: "https://picsum.photos/700" }} />
+        <Cover source={{ uri: item.image }} />
         <Card.Title
-          title="Title 5"
-          subtitle="R$ 1,200.00"
+          title={item.title}
+          subtitle={`R$${item.price}`}
           subtitleStyle={{ color: "#6200EE" }}
           right={Rating1}
         />
         {hasContent ? (
           <Card.Content>
-            <Paragraph>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor
-            </Paragraph>
+            <Paragraph>{item.description}</Paragraph>
           </Card.Content>
         ) : null}
       </Container>

@@ -3,7 +3,7 @@ import { View, Image, ScrollView } from "react-native";
 import { Subheading, Title, Chip, Button, Paragraph } from "react-native-paper";
 
 import Container from "../../components/Container";
-import EventCardCarrousel from "../../components/EventCardCarrousel";
+import EventCardCarrousel from "../../components/event-card-carousel";
 
 const EventDetails = ({ item }) => {
   // const {title, description,price} = item

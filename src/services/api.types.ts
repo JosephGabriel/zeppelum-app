@@ -31,3 +31,17 @@ export interface ErrorPayloadApi {
   };
   status: number;
 }
+
+export interface FindAllEvents {
+  title: string;
+  description: string;
+  price: number;
+  type: string;
+  dateStart: string;
+  endDate: string;
+  createdAt: string;
+  updatedAt: string;
+  image: string;
+  id: string;
+  rating: number;
+}
