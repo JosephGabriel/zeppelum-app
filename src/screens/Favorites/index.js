@@ -1,7 +1,7 @@
 import React from "react";
 import { List, Checkbox, Title, Divider } from "react-native-paper";
 
-import Container from "../../components/Container";
+import { Container } from "../../components/container";
 
 const Favorites = () => {
   return (

@@ -4,7 +4,7 @@ import { TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-paper";
 
 import { ErrorSnackBar } from "../../components/error-snackbar";
-import Container from "../../components/Container";
+import { Container } from "../../components/container";
 
 import { api } from "../../services/api";
 

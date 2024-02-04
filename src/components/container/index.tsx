@@ -10,7 +10,11 @@ interface Props {
   children?: React.ReactElement | JSX.Element[] | Element[];
 }
 
-const Container: React.FC<Props> = ({ children, statusBar, ...props }) => {
+export const Container: React.FC<Props> = ({
+  children,
+  statusBar,
+  ...props
+}) => {
   return (
     <ContainerHolder {...props}>
       {children}
@@ -18,5 +22,3 @@ const Container: React.FC<Props> = ({ children, statusBar, ...props }) => {
     </ContainerHolder>
   );
 };
-
-export default Container;

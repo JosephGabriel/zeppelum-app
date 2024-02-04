@@ -32,9 +32,10 @@ export interface ErrorPayloadApi {
   status: number;
 }
 
-export interface FindAllEvents {
+export interface EventApiPayload {
   title: string;
   description: string;
+  shortDescription: string;
   price: number;
   type: string;
   dateStart: string;

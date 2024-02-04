@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { HomeScreen } from "../screens/home";
 import CategoryResults from "../screens/CategoryResults";
 import OfferResults from "../screens/OfferResults";
-import EventDetails from "../screens/EventDetails";
+import { EventDetails } from "../screens/event-details";
 
 const Stack = createStackNavigator();
 

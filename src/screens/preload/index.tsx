@@ -2,9 +2,9 @@ import React from "react";
 import { ActivityIndicator } from "react-native-paper";
 import { ImageContainer, Logo } from "./styles";
 
-import Container from "../../components/Container";
+import { Container } from "../../components/container";
 
-const Preload = () => {
+export const Preload = () => {
   return (
     <Container center>
       <ImageContainer>
@@ -17,5 +17,3 @@ const Preload = () => {
     </Container>
   );
 };
-
-export default Preload;

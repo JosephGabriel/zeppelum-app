@@ -4,7 +4,7 @@ import {
   AuthPayload,
   LoginUserApiArgs,
   SignupUser,
-  FindAllEvents,
+  EventApiPayload,
 } from "./api.types";
 
 export const api = createApi({
@@ -36,7 +36,7 @@ export const api = createApi({
         },
       }),
     }),
-    findAllEvents: builder.query<FindAllEvents[], undefined>({
+    findAllEvents: builder.query<EventApiPayload[], void>({
       query: () => ({
         url: "events",
       }),

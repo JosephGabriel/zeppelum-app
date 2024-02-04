@@ -2,26 +2,28 @@ import React from "react";
 import { FlatList, View } from "react-native";
 import { Title } from "react-native-paper";
 
-import EventCard from "../EventCard";
-import { FindAllEvents } from "../../services/api.types";
+import { EventCard } from "../event-card";
+
+import { EventApiPayload } from "../../services/api.types";
 
 interface Props {
-  data: FindAllEvents[];
-  isTitled: boolean;
+  data: EventApiPayload[];
+  title: string;
   hasContent: boolean;
 }
 
-const EventCardCarrousel = ({ isTitled, hasContent, data }: Props) => {
+export const EventCardCarousel = ({ title, data }: Props) => {
   return (
     <View style={{ marginHorizontal: 20 }}>
-      {isTitled ? (
+      {title.length && (
         <Title style={{ fontWeight: "bold", marginVertical: 20 }}>
-          Em Alta
+          {title}
         </Title>
-      ) : null}
+      )}
+
       <FlatList
         data={data}
-        keyExtractor={(item, index) => item.id.toString()}
+        keyExtractor={(item) => item.id.toString()}
         showsHorizontalScrollIndicator={false}
         horizontal
         renderItem={({ item }) => <EventCard item={item} hasContent />}
@@ -29,5 +31,3 @@ const EventCardCarrousel = ({ isTitled, hasContent, data }: Props) => {
     </View>
   );
 };
-
-export default EventCardCarrousel;
