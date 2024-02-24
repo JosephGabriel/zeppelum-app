@@ -6,7 +6,7 @@ import { TextInput } from "react-native-paper";
 import { ErrorSnackBar } from "../../components/error-snackbar";
 
 import { api } from "../../services/api";
-import { ErrorPayloadApi } from "../../services/api.types";
+import { ErrorPayloadApi } from "../../services/types";
 
 import {
   TextContainer,

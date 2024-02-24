@@ -3,7 +3,7 @@ import { AirbnbRating } from "react-native-ratings";
 import { Card } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 
-import { EventApiPayload } from "../../services/api.types";
+import { EventPayload } from "../../services/types";
 
 import {
   Container,
@@ -14,7 +14,7 @@ import {
 } from "./styles";
 
 interface Props {
-  item: EventApiPayload;
+  item: EventPayload;
   hasContent: boolean;
 }
 

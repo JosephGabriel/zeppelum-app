@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { FlatList, View } from "react-native";
 
 import CategoryItem from "../CategoryItem";
 
-const CategoryCarrousel = ({ data }) => {
+export const CategoryCarousel = ({ data }) => {
   return (
     <View
       style={{
-        alignItems: "center",
         marginHorizontal: 20,
       }}
     >
@@ -15,7 +14,7 @@ const CategoryCarrousel = ({ data }) => {
         data={data}
         horizontal
         showsHorizontalScrollIndicator={false}
-        keyExtractor={(item, index) => item.id.toString()}
+        keyExtractor={(item) => `${item.id}`}
         renderItem={({ item, index }) => (
           <CategoryItem {...item} index={index} />
         )}
@@ -23,5 +22,3 @@ const CategoryCarrousel = ({ data }) => {
     </View>
   );
 };
-
-export default CategoryCarrousel;

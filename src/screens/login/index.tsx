@@ -8,7 +8,7 @@ import { Container } from "../../components/container";
 
 import { api } from "../../services/api";
 
-import { ErrorPayloadApi } from "../../services/api.types";
+import { ErrorPayloadApi } from "../../services/types";
 
 import {
   TextContainer,
@@ -22,8 +22,8 @@ import {
 } from "./styles";
 
 export const LoginScreen = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("admin@email.com");
+  const [password, setPassword] = useState("password");
   const [hidden, setHidden] = useState(true);
 
   const [error, setError] = useState<ErrorPayloadApi>();
@@ -39,7 +39,9 @@ export const LoginScreen = () => {
     })
       .unwrap()
       .catch((error) => {
-        setError(error);
+        if (error.data) {
+          setError(error);
+        }
       });
   };
 

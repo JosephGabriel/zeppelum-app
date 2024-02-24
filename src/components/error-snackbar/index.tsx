@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Snackbar } from "react-native-paper";
 
-import { ErrorPayloadApi } from "../../services/api.types";
+import { ErrorPayloadApi } from "../../services/types";
 
 interface Props {
   error?: ErrorPayloadApi;

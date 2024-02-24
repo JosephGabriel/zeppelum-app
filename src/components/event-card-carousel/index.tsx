@@ -4,10 +4,10 @@ import { Title } from "react-native-paper";
 
 import { EventCard } from "../event-card";
 
-import { EventApiPayload } from "../../services/api.types";
+import { EventPayload } from "../../services/types";
 
 interface Props {
-  data: EventApiPayload[];
+  data: EventPayload[];
   title: string;
   hasContent: boolean;
 }

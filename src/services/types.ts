@@ -1,4 +1,4 @@
-export interface LoginUserApiArgs {
+export interface LoginArgs {
   email: string;
   password: string;
 }
@@ -32,7 +32,7 @@ export interface ErrorPayloadApi {
   status: number;
 }
 
-export interface EventApiPayload {
+export interface EventPayload {
   title: string;
   description: string;
   shortDescription: string;
@@ -45,4 +45,10 @@ export interface EventApiPayload {
   image: string;
   id: string;
   rating: number;
+}
+
+export interface CategoriesPayload {
+  id: string;
+
+  name: string;
 }

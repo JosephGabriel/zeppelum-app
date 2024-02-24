@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { api } from "../../services/api";
 
-import { AuthPayload } from "../../services/api.types";
+import { AuthPayload } from "../../services/types";
 interface InitialState {
   token: AuthPayload["token"];
   currentUser: AuthPayload["user"];

@@ -4,6 +4,7 @@ import { RefreshControl, ScrollView } from "react-native";
 import { Container } from "../../components/container";
 import { SearchBar } from "../../components/searchbar";
 import { EventCardCarousel } from "../../components/event-card-carousel";
+import { CategoryCarousel } from "../../components/category-carrousel";
 
 import { api } from "../../services/api";
 
@@ -15,13 +16,16 @@ export const HomeScreen = () => {
 
   const { data, refetch } = api.useFindAllEventsQuery();
 
+  const { data: categories, refetch: categoriesRefetch } =
+    api.useFindAllCategoriesQuery();
+
   const onRefresh = useCallback(() => {
     setRefreshing(true);
 
-    refetch().finally(() => {
+    Promise.all([refetch, categoriesRefetch]).finally(() => {
       setRefreshing(false);
     });
-  }, [refetch]);
+  }, [refetch, categoriesRefetch]);
 
   return (
     <Container>
@@ -38,9 +42,10 @@ export const HomeScreen = () => {
         />
         {/*
         <SpotlightCarrousel cards={data} />
-        <OfferButtonCarrousel />
-        <CategoryCarrousel data={chips} />
-        */}
+        <OfferButtonCarrousel />*/}
+
+        <CategoryCarousel data={categories} />
+
         <EventCardCarousel data={data} title="Em Alta" hasContent />
       </ScrollView>
     </Container>

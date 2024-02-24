@@ -2,7 +2,7 @@ import React from "react";
 import { useRoute } from "@react-navigation/native";
 import { Chip, Button } from "react-native-paper";
 
-import { EventApiPayload } from "../../services/api.types";
+import { EventPayload } from "../../services/types";
 
 import {
   ChipContainer,
@@ -19,7 +19,7 @@ export const EventDetails = () => {
   const { params } = useRoute();
 
   // @ts-ignore
-  const item = params.item as EventApiPayload;
+  const item = params.item as EventPayload;
 
   return (
     <ScrollContainer>

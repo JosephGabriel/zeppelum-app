@@ -2,10 +2,11 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import {
   AuthPayload,
-  LoginUserApiArgs,
+  LoginArgs,
   SignupUser,
-  EventApiPayload,
-} from "./api.types";
+  EventPayload,
+  CategoriesPayload,
+} from "./types";
 
 export const api = createApi({
   reducerPath: "api",
@@ -13,7 +14,7 @@ export const api = createApi({
     baseUrl: "https://zeppelum-rest-api-production.up.railway.app",
   }),
   endpoints: (builder) => ({
-    loginUser: builder.mutation<AuthPayload, LoginUserApiArgs>({
+    loginUser: builder.mutation<AuthPayload, LoginArgs>({
       query: ({ email, password }) => ({
         url: "/auth/signin",
         method: "POST",
@@ -36,9 +37,14 @@ export const api = createApi({
         },
       }),
     }),
-    findAllEvents: builder.query<EventApiPayload[], void>({
+    findAllEvents: builder.query<EventPayload[], void>({
       query: () => ({
         url: "events",
+      }),
+    }),
+    findAllCategories: builder.query<CategoriesPayload, void>({
+      query: () => ({
+        url: "/categories",
       }),
     }),
   }),

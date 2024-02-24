@@ -2,7 +2,7 @@ import React from "react";
 import { ScrollView, View } from "react-native";
 
 import EventCardCarrousel from "../../components/event-card-carousel";
-import CategoryCarrousel from "../../components/CategoryCarrousel";
+import CategoryCarrousel from "../../components/category-carrousel";
 
 const data = [
   {
